@@ -2,7 +2,7 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-fzf_output=$( $CURRENT_DIR/recently.sh | fzf --ansi \
+fzf_output=$( $CURRENT_DIR/tail-history.sh 30 | fzf --ansi \
 	--bind "ctrl-r:reload($CURRENT_DIR/recently.sh)" )
 
 window_id=$(echo "$fzf_output" | awk '{print $3}')
