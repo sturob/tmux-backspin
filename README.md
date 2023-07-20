@@ -1,6 +1,6 @@
-# tmux-history
+# tmux-backspin
 
-A back button and a bit of tmux infrastructure to support it. Works across sessions.
+A back button and associated tools
 
 ## Why is this necessary?
 
@@ -9,13 +9,19 @@ If you rarely navigate between sessions in tmux then it's not. If you do, howeve
 ## Default bindings
 
 - alt-b = back
-or
 - prefix-backspace = back
 
-## Not yet supported
+## Tools
 
-- separate clients
+tail-history.sh
+
+this plugin stores a log of all window changes in /tmp/tmux-back, this can be used to track history
+
+## Not yet supported
 
 - linked windows
 
 
+## Works well with
+
+- tmux-teleport
