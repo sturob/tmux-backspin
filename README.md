@@ -1,6 +1,6 @@
 # tmux-backspin
 
-A back button and logger of window navigation history
+Provides a proper back button and saves a log of window navigation history.
 
 ## Why is this necessary?
 
@@ -17,7 +17,7 @@ Backspin avoids all that and takes you back to the window you were previously lo
 
 ## How it works
 
-The plugin uses tmux-hooks to keep a log of all window navigations under /tmp/tmux-back/. This is so we can support going back more than one window at some point. For now it can be useful to tail as a live log of what you have been working on.
+The plugin uses tmux-hooks to keep a log of all window navigations under /tmp/tmux-back/. This is so we can support going back more than one window in the future. For now it can be useful to tail as a live log of what you have been working on.
 
 Run ~/.tmux/plugins/tmux-backspin/scripts/tail-history.sh for the live formatted log:
 
@@ -35,6 +35,29 @@ Run ~/.tmux/plugins/tmux-backspin/scripts/tail-history.sh for the live formatted
 
 
 ## Installation
+
+### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
+
+Add plugin to the list of TPM plugins in `.tmux.conf`:
+
+    set -g @plugin 'sturob/tmux-backspin'
+
+Hit `prefix + I` to fetch the plugin and source it. You should now be able to
+use the plugin.
+
+### Manual Installation
+
+Clone the repo:
+
+    $ git clone https://github.com/sturob/tmux-backsping ~/clone/path
+
+Add this line to the bottom of `.tmux.conf`:
+
+    run-shell ~/clone/path/backspin.tmux
+
+Reload TMUX environment with: `$ tmux source-file ~/.tmux.conf`.
+You should now be able to use the plugin.
+
 
 
 ## Not yet supported
