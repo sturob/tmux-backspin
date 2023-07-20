@@ -12,10 +12,17 @@ FWD=""
 
 penultimate_line=$(cat $file | uniq | tail -2 | head -1)
 window_id=$(echo $penultimate_line | awk '{ print $2 }')
-session_id=$(echo $penultimate_line | awk '{ print $3 }')
+session_name=$(echo $penultimate_line | awk '{ print $3 }')
 
-tmux switch-client -t $session_id
-tmux select-window -t "$window_id"
+current_session_id=$(tmux display-message -p '#{session_id}')
+target_session_id=$(tmux display-message -p -t "$window_id" -F '#{session_id}')
+
+if [[ "$current_session_id" == "$target_session_id" ]]; then
+	tmux select-window -t "$window_id"
+else
+	tmux select-window -t "$window_id"
+	tmux switch-client -t $target_session_id
+fi
 
 truncate_file() {
   local file=$1
