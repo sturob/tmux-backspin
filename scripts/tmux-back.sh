@@ -4,12 +4,6 @@ dir="/tmp/tmux-back"
 tty=$(tmux display-message -p -F "#{client_tty}" | tr '/' '_')
 file="$dir/$tty-state.log"
 
-LAST=""
-BACK=""
-FWD=""
-
-# old_window_id=$(tmux display-message -p -F "#{window_id}")
-
 penultimate_line=$(tail -n 30 $file | uniq | tail -2 | head -1)
 window_id=$(echo $penultimate_line | awk '{ print $2 }')
 session_name=$(echo $penultimate_line | awk '{ print $3 }')
