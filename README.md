@@ -1,6 +1,6 @@
 # tmux-backspin
 
-A back button and logger of window location history
+A back button and logger of window navigation history
 
 ## Why is this necessary?
 
@@ -8,7 +8,7 @@ If you don't navigate between sessions in tmux then it's not. Just bind somethin
 
 If you use a more advanced window navigation technique (something like [tmux-teleport](https://github.com/sturob/tmux-teleport)) then you will have noticed that last-window only works within the current session. Sure you can use `switch-client -l` to switch back to the last session, but that requires you to remember if the last window want to return to was in the current session or not... and to maintain and remember two separate bindings.
 
-Backspin takes you back to the the window you were looking at before the current one, regardless of where it is.
+Backspin takes you back to the window you were previously looking at, regardless of where it is.
 
 ## Default bindings
 
@@ -17,9 +17,9 @@ Backspin takes you back to the the window you were looking at before the current
 
 ## How it works
 
-The plugin keeps a log of all window changes (separated by client) in /tmp/tmux-back. This is so we can add multiple levels of back at some point. For now it is useful to tail and have a visual guide to what you have been working on.
+The plugin keeps a log of all window navigations (separated by client) under /tmp/tmux-back/. This is so we can add multiple levels of back at some point. For now it can be useful to tail -F and have a live log of what you have been working on.
 
-Run ~/.tmux/plugins/tmux-backspin/scripts/tail-history.sh for live updating formatted log:
+Run ~/.tmux/plugins/tmux-backspin/scripts/tail-history.sh for a live formatted log:
 
 	$ ./tail-history.sh
 	15:48  1-main > Teleport
