@@ -1,27 +1,51 @@
 # tmux-backspin
 
-A back button and associated tools
+A back button and logger of window location history
 
 ## Why is this necessary?
 
-If you rarely navigate between sessions in tmux then it's not. If you do, however, you might not be satified with having to consciously work out if you want to go to back to the previous window in this session, or need to go back to the previous session. They are separate commands. With this you just go back to the last window you were looking at, regardless of where it is.
+If you don't navigate between sessions in tmux then it's not. Just bind something to `tmux last-window` and you're set.
+
+If you use a more advanced window navigation technique (something like [tmux-teleport](https://github.com/sturob/tmux-teleport)) then you will have noticed that last-window only works within the current session. Sure you can use `switch-client -l` to switch back to the last session, but that requires you to remember if the last window want to return to was in the current session or not... and to maintain and remember two separate bindings.
+
+Backspin takes you back to the the window you were looking at before the current one, regardless of where it is.
 
 ## Default bindings
 
 - alt-b = back
 - prefix-backspace = back
 
-## Tools
+## How it works
 
-tail-history.sh
+The plugin keeps a log of all window changes (separated by client) in /tmp/tmux-back. This is so we can add multiple levels of back at some point. For now it is useful to tail and have a visual guide to what you have been working on.
 
-this plugin stores a log of all window changes in /tmp/tmux-back, this can be used to track history
+Run ~/.tmux/plugins/tmux-backspin/scripts/tail-history.sh for live updating formatted log:
+
+	$ ./tail-history.sh
+	15:48  1-main > Teleport
+	15:48  1-main > bacKspin
+	15:48  1-main > Propane
+	15:48  1-main > bacKspin
+	15:48  1-main > Propane
+	15:48  1-main > bacKspin
+	15:48  0-help > good-bash
+	15:48  1-main > bacKspin
+	15:48  1-main > Propane
+	15:48  1-main > bacKspin
+	15:52  1-main > tmuX
+	15:53  0-help > good-bash
+	15:53  1-main > tmuX
+	15:53  0-help > good-bash
+	15:53  1-main > tmuX
+	15:53  1-main > bacKspin
+	15:53  1-main > bacKspin
+	15:53  1-main > tmuX
+
+
+## Installation
+
 
 ## Not yet supported
 
 - linked windows
 
-
-## Works well with
-
-- tmux-teleport
