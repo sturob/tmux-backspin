@@ -6,7 +6,7 @@ A back button and logger of window navigation history
 
 If you don't navigate between sessions in tmux then it's not. Just bind something to `tmux last-window` and you're set.
 
-If you use a more advanced window navigation technique (something like [tmux-teleport](https://github.com/sturob/tmux-teleport)) then you will have noticed that last-window only works within the current session. Sure you can use `switch-client -l` to switch back to the last session, but that requires you to remember if the last window want to return to was in the current session or not... and to maintain and remember two separate bindings.
+If you use a more advanced window navigation technique (something like [tmux-teleport](https://github.com/sturob/tmux-teleport)) then you will have noticed that last-window only works within the current session. Sure you can use `switch-client -l` to switch back to the last session, but now you need to remember if the last window you want to return to was in the current session or not... and to maintain and remember two separate bindings.
 
 Backspin takes you back to the window you were previously looking at, regardless of where it is.
 
