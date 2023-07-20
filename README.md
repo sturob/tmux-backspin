@@ -17,14 +17,11 @@ Backspin takes you back to the window you were previously looking at, regardless
 
 ## How it works
 
-The plugin keeps a log of all window navigations (separated by client) under /tmp/tmux-back/. This is so we can add multiple levels of back at some point. For now it can be useful to tail -F and have a live log of what you have been working on.
+The plugin uses tmux-hooks to keep a log of all window navigations under /tmp/tmux-back/. This is so we can support going back more than one window at some point. For now it can be useful to tail as a live log of what you have been working on.
 
-Run ~/.tmux/plugins/tmux-backspin/scripts/tail-history.sh for a live formatted log:
+Run ~/.tmux/plugins/tmux-backspin/scripts/tail-history.sh for the live formatted log:
 
 	$ ./tail-history.sh
-	15:48  1-main > Teleport
-	15:48  1-main > bacKspin
-	15:48  1-main > Propane
 	15:48  1-main > bacKspin
 	15:48  1-main > Propane
 	15:48  1-main > bacKspin
@@ -34,11 +31,6 @@ Run ~/.tmux/plugins/tmux-backspin/scripts/tail-history.sh for a live formatted l
 	15:48  1-main > bacKspin
 	15:52  1-main > tmuX
 	15:53  0-help > good-bash
-	15:53  1-main > tmuX
-	15:53  0-help > good-bash
-	15:53  1-main > tmuX
-	15:53  1-main > bacKspin
-	15:53  1-main > bacKspin
 	15:53  1-main > tmuX
 
 
