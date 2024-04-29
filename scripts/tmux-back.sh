@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir="/tmp/tmux-back"
+dir="/tmp/tmux-back-$(whoami)"
 tty=$(tmux display-message -p -F "#{client_tty}" | tr '/' '_')
 file="$dir/$tty-state.log"
 
