@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir="/tmp/tmux-back"
+dir="/tmp/tmux-back-$(whoami)"
 mkdir -p $dir
 
 tty=$(tmux display-message -p -F "#{client_tty}" | tr '/' '_')
